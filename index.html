@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WORKPRO — Telegram-боты, Mini Apps и сайты под ключ</title>
+<meta name="description" content="Разработка Telegram-ботов, мини-приложений, сайтов и мобильных приложений. Быстро, с тестами, от идеи до запуска." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script>
+tailwind.config = { theme: { extend: {
+  fontFamily: { display: ['Unbounded','sans-serif'], body: ['Manrope','sans-serif'] },
+  colors: { ink: '#08080c', panel: '#0f0f16' }
+}}}
+</script>
+<style>
+  html{scroll-behavior:smooth}
+  body{background:#08080c;color:#e9e9f0;font-family:'Manrope',sans-serif;overflow-x:hidden}
+  ::selection{background:#a855f7;color:#fff}
+  .grad-text{background:linear-gradient(100deg,#818cf8,#e879f9 45%,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .grad-btn{background:linear-gradient(100deg,#6366f1,#d946ef 50%,#06b6d4);background-size:200% 100%;transition:.4s}
+  .grad-btn:hover{background-position:100% 0;transform:translateY(-2px);box-shadow:0 16px 40px -12px rgba(217,70,239,.6)}
+  .glass{background:rgba(15,15,22,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:float 14s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.1)}66%{transform:translate(-30px,20px) scale(.95)}}
+  .reveal{opacity:0;transform:translateY(28px);transition:all .8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .card-hover{transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
+  .card-hover:hover{transform:translateY(-6px)}
+  /* phone frame */
+  .phone{position:relative;border-radius:2.2rem;background:#15151c;padding:.45rem;border:1px solid rgba(255,255,255,.09);box-shadow:0 30px 70px -25px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.06)}
+  .phone img{display:block;width:100%;border-radius:1.8rem}
+  .phone::before{content:"";position:absolute;top:.55rem;left:50%;transform:translateX(-50%);width:34%;height:.5rem;background:#000;border-radius:99px;z-index:2;opacity:.85}
+  /* browser frame */
+  .browser{border-radius:.9rem;overflow:hidden;border:1px solid rgba(255,255,255,.1);background:#16161d;box-shadow:0 30px 70px -25px rgba(0,0,0,.85)}
+  .browser .bar{display:flex;align-items:center;gap:.4rem;padding:.65rem .9rem;background:#1d1d26;border-bottom:1px solid rgba(255,255,255,.06)}
+  .browser .bar i{width:.7rem;height:.7rem;border-radius:50%;display:block}
+  .browser .url{margin-left:.6rem;font-size:.7rem;color:#8a8a9a;background:#0f0f16;padding:.25rem .8rem;border-radius:99px;flex:1}
+  .browser img{display:block;width:100%}
+  .tag{font-size:.72rem;padding:.28rem .7rem;border-radius:99px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:#c9c9d6}
+  .nav-link{position:relative}
+  .nav-link::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:linear-gradient(90deg,#818cf8,#e879f9);transition:.3s}
+  .nav-link:hover::after{width:100%}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="glass fixed top-0 inset-x-0 z-50 border-b border-white/5">
+  <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+    <a href="#top" class="font-display font-extrabold text-lg tracking-tight">WORK<span class="grad-text">PRO</span></a>
+    <nav class="hidden md:flex items-center gap-8 text-sm text-zinc-300">
+      <a href="#works" class="nav-link">Работы</a>
+      <a href="#services" class="nav-link">Услуги</a>
+      <a href="#process" class="nav-link">Как работаю</a>
+    </nav>
+    <a href="https://t.me/workpro_time" target="_blank" rel="noopener" class="grad-btn text-white text-sm font-semibold px-5 py-2.5 rounded-full">Написать</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+  <div class="blob w-[480px] h-[480px] bg-indigo-600 -top-20 -left-20"></div>
+  <div class="blob w-[420px] h-[420px] bg-fuchsia-600 top-40 right-0" style="animation-delay:-4s"></div>
+  <div class="blob w-[360px] h-[360px] bg-cyan-500 bottom-0 left-1/3" style="animation-delay:-8s"></div>
+  <div class="relative max-w-6xl mx-auto px-5 w-full">
+    <div class="max-w-3xl">
+      <div class="reveal inline-flex items-center gap-2 text-xs font-semibold text-zinc-300 border border-white/10 rounded-full px-4 py-2 mb-7">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Открыт для заказов · отвечаю за минуты
+      </div>
+      <h1 class="reveal font-display font-black leading-[1.05] text-4xl sm:text-6xl lg:text-7xl mb-6">
+        Telegram-боты, <span class="grad-text">Mini Apps</span><br>и сайты под ключ
+      </h1>
+      <p class="reveal text-lg sm:text-xl text-zinc-400 mb-9 max-w-2xl" style="transition-delay:.1s">
+        От идеи до запуска — за дни, не месяцы. С базой данных, оплатой, админкой и тестами.
+        Делаю так, чтобы работало и продавало.
+      </p>
+      <div class="reveal flex flex-wrap gap-4 mb-14" style="transition-delay:.2s">
+        <a href="https://t.me/workpro_time" target="_blank" rel="noopener" class="grad-btn text-white font-semibold px-7 py-3.5 rounded-full">Обсудить проект →</a>
+        <a href="#works" class="border border-white/15 hover:border-white/40 transition px-7 py-3.5 rounded-full font-semibold">Смотреть работы</a>
+      </div>
+      <div class="reveal grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl" style="transition-delay:.3s">
+        <div><div class="font-display font-extrabold text-3xl grad-text">7+</div><div class="text-xs text-zinc-500 mt-1">проектов</div></div>
+        <div><div class="font-display font-extrabold text-3xl grad-text">64</div><div class="text-xs text-zinc-500 mt-1">экрана в флагмане</div></div>
+        <div><div class="font-display font-extrabold text-3xl grad-text">90+</div><div class="text-xs text-zinc-500 mt-1">автотестов</div></div>
+        <div><div class="font-display font-extrabold text-3xl grad-text">дни</div><div class="text-xs text-zinc-500 mt-1">срок запуска</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works" class="max-w-6xl mx-auto px-5 py-20">
+  <div class="reveal mb-14">
+    <p class="text-sm font-semibold text-fuchsia-400 mb-3 tracking-wide uppercase">Избранные работы</p>
+    <h2 class="font-display font-extrabold text-3xl sm:text-5xl">Что я уже сделал</h2>
+  </div>
+
+  <!-- Tribe -->
+  <div class="reveal card-hover rounded-3xl border border-white/8 bg-panel p-6 sm:p-10 mb-10 grid lg:grid-cols-2 gap-10 items-center">
+    <div>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="tag border-fuchsia-500/40 text-fuchsia-300">Флагман</span>
+        <span class="tag">Нативное приложение</span>
+      </div>
+      <h3 class="font-display font-bold text-2xl sm:text-3xl mb-3">Tribe — фитнес + соцсеть в одном</h3>
+      <p class="text-zinc-400 mb-5">Большое мобильное приложение: персональные тренировки с ИИ, питание и рецепты, состав тела с Bluetooth-весами — и социальная сеть с клубами, лентой и личкой. 64 экрана.</p>
+      <div class="flex flex-wrap gap-2">
+        <span class="tag">React Native (Expo)</span><span class="tag">Supabase</span><span class="tag">ИИ</span><span class="tag">iOS / Android</span>
+      </div>
+    </div>
+    <div class="flex justify-center gap-4">
+      <div class="phone w-36 sm:w-44 rotate-[-4deg] translate-y-2"><img src="assets/tribe-1.jpg" alt="Tribe ИИ-тренировка" loading="lazy"></div>
+      <div class="phone w-36 sm:w-44 z-10"><img src="assets/tribe-2.jpg" alt="Tribe упражнение" loading="lazy"></div>
+      <div class="phone w-36 sm:w-44 rotate-[4deg] translate-y-2 hidden sm:block"><img src="assets/tribe-3.jpg" alt="Tribe рецепты" loading="lazy"></div>
+    </div>
+  </div>
+
+  <!-- resale -->
+  <div class="reveal card-hover rounded-3xl border border-white/8 bg-panel p-6 sm:p-10 mb-10 grid lg:grid-cols-2 gap-10 items-center">
+    <div class="flex justify-center gap-4 lg:order-1 order-2">
+      <div class="phone w-36 sm:w-44 rotate-[-4deg] translate-y-2"><img src="assets/resale-1.jpg" alt="resale каталог" loading="lazy"></div>
+      <div class="phone w-36 sm:w-44 z-10"><img src="assets/resale-2.jpg" alt="resale карточка" loading="lazy"></div>
+      <div class="phone w-36 sm:w-44 rotate-[4deg] translate-y-2 hidden sm:block"><img src="assets/resale-3.jpg" alt="resale админка" loading="lazy"></div>
+    </div>
+    <div class="lg:order-2 order-1">
+      <div class="flex items-center gap-3 mb-4"><span class="tag">Telegram</span><span class="tag border-cyan-500/40 text-cyan-300">Бот + Mini App + оплата</span></div>
+      <h3 class="font-display font-bold text-2xl sm:text-3xl mb-3">resale — магазин в Telegram</h3>
+      <p class="text-zinc-400 mb-5">Полный цикл продажи без сайта: каталог, избранное с пуш-уведомлениями «подешевело», бронь, встроенный чат, онлайн-оплата и админка с воронкой и рассылками.</p>
+      <div class="flex flex-wrap gap-2"><span class="tag">Flask</span><span class="tag">SQLite</span><span class="tag">aiogram</span><span class="tag">62 теста</span></div>
+    </div>
+  </div>
+
+  <!-- two-up: smart-booking + tovarscan -->
+  <div class="grid md:grid-cols-2 gap-10 mb-10">
+    <div class="reveal card-hover rounded-3xl border border-white/8 bg-panel p-6 sm:p-8">
+      <div class="flex justify-center gap-3 mb-7">
+        <div class="phone w-32 rotate-[-3deg]"><img src="assets/smart-1.jpg" alt="Мастерс каталог" loading="lazy"></div>
+        <div class="phone w-32 rotate-[3deg] translate-y-2"><img src="assets/smart-2.jpg" alt="Мастерс брони" loading="lazy"></div>
+      </div>
+      <span class="tag mb-3 inline-block">Mini App · ИИ</span>
+      <h3 class="font-display font-bold text-xl mb-2">Запись к мастерам + ИИ-подбор</h3>
+      <p class="text-zinc-400 text-sm">Каталог мастеров красоты, опрос и ИИ-подбор под запрос клиента, запись на слот, чаты. 31 тест.</p>
+    </div>
+    <div class="reveal card-hover rounded-3xl border border-white/8 bg-panel p-6 sm:p-8">
+      <div class="flex justify-center gap-3 mb-7">
+        <div class="phone w-32 rotate-[-3deg]"><img src="assets/tovar-1.jpg" alt="TovarScan ввод" loading="lazy"></div>
+        <div class="phone w-32 rotate-[3deg] translate-y-2"><img src="assets/tovar-2.jpg" alt="TovarScan результат" loading="lazy"></div>
+      </div>
+      <span class="tag mb-3 inline-block">Mini App</span>
+      <h3 class="font-display font-bold text-xl mb-2">AI-аналитик товарной ниши</h3>
+      <p class="text-zinc-400 text-sm">Селлер вводит товар → спрос, конкуренция, рекомендованная цена и вердикт «стоит / не стоит». Тёмный неон-интерфейс.</p>
+    </div>
+  </div>
+
+  <!-- landings: 3 -->
+  <p class="reveal text-sm font-semibold text-zinc-500 mb-6 uppercase tracking-wide">Лендинги и сайты</p>
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="reveal card-hover rounded-2xl border border-white/8 bg-panel p-5">
+      <div class="browser mb-4"><div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="url">svezhiy-urozhay</span></div><img src="assets/svezhiy-d.jpg" alt="Свежий Урожай" loading="lazy"></div>
+      <h3 class="font-display font-bold text-lg mb-1">Свежий Урожай</h3>
+      <p class="text-zinc-400 text-sm">Лендинг фермерской доставки: каталог, корзина с живой суммой, checkout с валидацией.</p>
+    </div>
+    <div class="reveal card-hover rounded-2xl border border-white/8 bg-panel p-5">
+      <div class="browser mb-4"><div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="url">skinai</span></div><img src="assets/skinai-d.jpg" alt="SkinAI" loading="lazy"></div>
+      <h3 class="font-display font-bold text-lg mb-1">SkinAI</h3>
+      <p class="text-zinc-400 text-sm">Квиз-подбор ухода за кожей за 60 секунд: 5 шагов → персональные рекомендации.</p>
+    </div>
+    <div class="reveal card-hover rounded-2xl border border-white/8 bg-panel p-5">
+      <div class="browser mb-4"><div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="url">korol-borody</span></div><img src="assets/korol-d.jpg" alt="Король Бороды" loading="lazy"></div>
+      <h3 class="font-display font-bold text-lg mb-1">Король Бороды</h3>
+      <p class="text-zinc-400 text-sm">Премиум-лендинг барбершопа с ИИ-стилистом: разбор формы лица → подбор стрижки.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="max-w-6xl mx-auto px-5 py-20">
+  <div class="reveal mb-12">
+    <p class="text-sm font-semibold text-fuchsia-400 mb-3 tracking-wide uppercase">Услуги</p>
+    <h2 class="font-display font-extrabold text-3xl sm:text-5xl">Что могу сделать вам</h2>
+    <p class="text-zinc-500 mt-3">Цена «от» — точная после короткого ТЗ. Предоплата 50%, демо до оплаты.</p>
+  </div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="reveal card-hover rounded-2xl border border-white/8 bg-panel p-7">
+      <div class="text-3xl mb-4">🤖</div><h3 class="font-display font-bold text-lg mb-2">Telegram-бот</h3>
+      <p class="text-zinc-400 text-sm mb-4">Заявки, каталог, кнопки, база данных, админка, уведомления.</p>
+      <div class="font-display font-extrabold text-xl grad-text">от 5 000 ₽</div>
+    </div>
+    <div class="reveal card-hover rounded-2xl border border-white/8 bg-panel p-7">
+      <div class="text-3xl mb-4">📱</div><h3 class="font-display font-bold text-lg mb-2">Telegram Mini App</h3>
+      <p class="text-zinc-400 text-sm mb-4">Каталог, запись/заказ, оплата, личный кабинет, админка — внутри Telegram.</p>
+      <div class="font-display font-extrabold text-xl grad-text">от 25 000 ₽</div>
+    </div>
+    <div class="reveal card-hover rounded-2xl border border-white/8 bg-panel p-7">
+      <div class="text-3xl mb-4">🌐</div><h3 class="font-display font-bold text-lg mb-2">Лендинг / сайт</h3>
+      <p class="text-zinc-400 text-sm mb-4">Адаптивный, с анимациями, каталогом, корзиной и формой заявки.</p>
+      <div class="font-display font-extrabold text-xl grad-text">от 6 000 ₽</div>
+    </div>
+    <div class="reveal card-hover rounded-2xl border border-white/8 bg-panel p-7">
+      <div class="text-3xl mb-4">⚙️</div><h3 class="font-display font-bold text-lg mb-2">Веб-приложение</h3>
+      <p class="text-zinc-400 text-sm mb-4">Сервис с логикой, базой, ролями и оплатой. С тестами.</p>
+      <div class="font-display font-extrabold text-xl grad-text">от 25 000 ₽</div>
+    </div>
+    <div class="reveal card-hover rounded-2xl border border-white/8 bg-panel p-7">
+      <div class="text-3xl mb-4">🧩</div><h3 class="font-display font-bold text-lg mb-2">Мобильное приложение</h3>
+      <p class="text-zinc-400 text-sm mb-4">Нативное iOS/Android на React Native — как Tribe.</p>
+      <div class="font-display font-extrabold text-xl grad-text">обсуждается</div>
+    </div>
+    <div class="reveal card-hover rounded-2xl border border-fuchsia-500/30 bg-gradient-to-br from-fuchsia-600/10 to-cyan-500/5 p-7">
+      <div class="text-3xl mb-4">💬</div><h3 class="font-display font-bold text-lg mb-2">Не знаете, что нужно?</h3>
+      <p class="text-zinc-400 text-sm mb-4">Напишите задачу своими словами — предложу решение и цену.</p>
+      <a href="https://t.me/workpro_time" target="_blank" rel="noopener" class="font-semibold text-fuchsia-300">Написать в Telegram →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="max-w-6xl mx-auto px-5 py-20">
+  <div class="reveal mb-12"><h2 class="font-display font-extrabold text-3xl sm:text-5xl">Как работаю</h2></div>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="reveal rounded-2xl border border-white/8 bg-panel p-7"><div class="font-display font-black text-5xl grad-text mb-4">01</div><h3 class="font-display font-bold text-lg mb-2">Обсудили</h3><p class="text-zinc-400 text-sm">Короткое ТЗ голосом или текстом. Фиксирую задачу и сроки, называю цену.</p></div>
+    <div class="reveal rounded-2xl border border-white/8 bg-panel p-7" style="transition-delay:.1s"><div class="font-display font-black text-5xl grad-text mb-4">02</div><h3 class="font-display font-bold text-lg mb-2">Показал демо</h3><p class="text-zinc-400 text-sm">Собираю и показываю работающее демо до полной оплаты. Правим, пока не нравится.</p></div>
+    <div class="reveal rounded-2xl border border-white/8 bg-panel p-7" style="transition-delay:.2s"><div class="font-display font-black text-5xl grad-text mb-4">03</div><h3 class="font-display font-bold text-lg mb-2">Запуск</h3><p class="text-zinc-400 text-sm">Деплой, передача доступов, инструкция. На связи после сдачи.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="max-w-6xl mx-auto px-5 py-20">
+  <div class="reveal relative overflow-hidden rounded-3xl border border-white/10 p-10 sm:p-16 text-center">
+    <div class="blob w-[400px] h-[400px] bg-fuchsia-600 -top-24 left-1/4"></div>
+    <div class="blob w-[360px] h-[360px] bg-cyan-500 -bottom-24 right-1/4" style="animation-delay:-6s"></div>
+    <div class="relative">
+      <h2 class="font-display font-black text-3xl sm:text-5xl mb-5">Обсудим ваш проект?</h2>
+      <p class="text-zinc-300 text-lg mb-8 max-w-xl mx-auto">Напишите задачу — отвечу за минуты, покажу похожую работу и назову цену.</p>
+      <a href="https://t.me/workpro_time" target="_blank" rel="noopener" class="grad-btn inline-block text-white font-bold text-lg px-9 py-4 rounded-full">Написать в Telegram</a>
+      <div class="text-zinc-500 mt-5 text-sm">@workpro_time</div>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-white/5 py-8 text-center text-zinc-600 text-sm">
+  <span class="font-display font-extrabold">WORK<span class="grad-text">PRO</span></span> · Telegram-боты, Mini Apps и сайты · <a href="https://t.me/workpro_time" class="hover:text-zinc-300">@workpro_time</a>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  // фолбэк: ничто не остаётся невидимым, даже если observer не сработал
+  setTimeout(() => document.querySelectorAll('.reveal:not(.in)').forEach((el) => el.classList.add('in')), 1800);
+</script>
+</body>
+</html>
