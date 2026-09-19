@@ -29,11 +29,11 @@ tailwind.config = { theme: { extend: {
   .reveal.in{opacity:1;transform:none}
   .card-hover{transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
   .card-hover:hover{transform:translateY(-6px)}
-  /* phone frame */
+
   .phone{position:relative;border-radius:2.2rem;background:#15151c;padding:.45rem;border:1px solid rgba(255,255,255,.09);box-shadow:0 30px 70px -25px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.06)}
   .phone img{display:block;width:100%;border-radius:1.8rem}
   .phone::before{content:"";position:absolute;top:.55rem;left:50%;transform:translateX(-50%);width:34%;height:.5rem;background:#000;border-radius:99px;z-index:2;opacity:.85}
-  /* browser frame */
+
   .browser{border-radius:.9rem;overflow:hidden;border:1px solid rgba(255,255,255,.1);background:#16161d;box-shadow:0 30px 70px -25px rgba(0,0,0,.85)}
   .browser .bar{display:flex;align-items:center;gap:.4rem;padding:.65rem .9rem;background:#1d1d26;border-bottom:1px solid rgba(255,255,255,.06)}
   .browser .bar i{width:.7rem;height:.7rem;border-radius:50%;display:block}
@@ -47,7 +47,6 @@ tailwind.config = { theme: { extend: {
 </head>
 <body>
 
-<!-- NAV -->
 <header class="glass fixed top-0 inset-x-0 z-50 border-b border-white/5">
   <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
     <a href="#top" class="font-display font-extrabold text-lg tracking-tight">WORK<span class="grad-text">PRO</span></a>
@@ -60,7 +59,6 @@ tailwind.config = { theme: { extend: {
   </div>
 </header>
 
-<!-- HERO -->
 <section id="top" class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
   <div class="blob w-[480px] h-[480px] bg-indigo-600 -top-20 -left-20"></div>
   <div class="blob w-[420px] h-[420px] bg-fuchsia-600 top-40 right-0" style="animation-delay:-4s"></div>
@@ -92,14 +90,12 @@ tailwind.config = { theme: { extend: {
   </div>
 </section>
 
-<!-- WORKS -->
 <section id="works" class="max-w-6xl mx-auto px-5 py-20">
   <div class="reveal mb-14">
     <p class="text-sm font-semibold text-fuchsia-400 mb-3 tracking-wide uppercase">Избранные работы</p>
     <h2 class="font-display font-extrabold text-3xl sm:text-5xl">Что я уже сделал</h2>
   </div>
 
-  <!-- Tribe -->
   <div class="reveal card-hover rounded-3xl border border-white/8 bg-panel p-6 sm:p-10 mb-10 grid lg:grid-cols-2 gap-10 items-center">
     <div>
       <div class="flex items-center gap-3 mb-4">
@@ -119,7 +115,6 @@ tailwind.config = { theme: { extend: {
     </div>
   </div>
 
-  <!-- resale -->
   <div class="reveal card-hover rounded-3xl border border-white/8 bg-panel p-6 sm:p-10 mb-10 grid lg:grid-cols-2 gap-10 items-center">
     <div class="flex justify-center gap-4 lg:order-1 order-2">
       <div class="phone w-36 sm:w-44 rotate-[-4deg] translate-y-2"><img src="assets/resale-1.jpg" alt="resale каталог" loading="lazy"></div>
@@ -134,7 +129,6 @@ tailwind.config = { theme: { extend: {
     </div>
   </div>
 
-  <!-- TovarLink Pro (full-stack SaaS) -->
   <div class="reveal card-hover rounded-3xl border border-white/8 bg-panel p-6 sm:p-10 mb-10 grid lg:grid-cols-2 gap-10 items-center">
     <div>
       <div class="flex items-center gap-3 mb-4">
@@ -151,7 +145,6 @@ tailwind.config = { theme: { extend: {
     </div>
   </div>
 
-  <!-- two-up: smart-booking + tovarscan -->
   <div class="grid md:grid-cols-2 gap-10 mb-10">
     <div class="reveal card-hover rounded-3xl border border-white/8 bg-panel p-6 sm:p-8">
       <div class="flex justify-center gap-3 mb-7">
@@ -173,7 +166,6 @@ tailwind.config = { theme: { extend: {
     </div>
   </div>
 
-  <!-- landings: 3 -->
   <p class="reveal text-sm font-semibold text-zinc-500 mb-6 uppercase tracking-wide">Лендинги и сайты</p>
   <div class="grid md:grid-cols-3 gap-8">
     <div class="reveal card-hover rounded-2xl border border-white/8 bg-panel p-5">
@@ -193,7 +185,6 @@ tailwind.config = { theme: { extend: {
     </div>
   </div>
 
-  <!-- concepts: 3 UI screens -->
   <p class="reveal text-sm font-semibold text-zinc-500 mb-6 mt-14 uppercase tracking-wide">Концепты интерфейсов</p>
   <div class="grid md:grid-cols-3 gap-8">
     <div class="reveal card-hover rounded-2xl border border-white/8 bg-panel p-5">
@@ -224,7 +215,6 @@ tailwind.config = { theme: { extend: {
   </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services" class="max-w-6xl mx-auto px-5 py-20">
   <div class="reveal mb-12">
     <p class="text-sm font-semibold text-fuchsia-400 mb-3 tracking-wide uppercase">Услуги</p>
@@ -265,7 +255,6 @@ tailwind.config = { theme: { extend: {
   </div>
 </section>
 
-<!-- PROCESS -->
 <section id="process" class="max-w-6xl mx-auto px-5 py-20">
   <div class="reveal mb-12"><h2 class="font-display font-extrabold text-3xl sm:text-5xl">Как работаю</h2></div>
   <div class="grid md:grid-cols-3 gap-6">
@@ -275,7 +264,6 @@ tailwind.config = { theme: { extend: {
   </div>
 </section>
 
-<!-- CTA -->
 <section class="max-w-6xl mx-auto px-5 py-20">
   <div class="reveal relative overflow-hidden rounded-3xl border border-white/10 p-10 sm:p-16 text-center">
     <div class="blob w-[400px] h-[400px] bg-fuchsia-600 -top-24 left-1/4"></div>
@@ -301,7 +289,7 @@ tailwind.config = { theme: { extend: {
     entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-  // фолбэк: ничто не остаётся невидимым, даже если observer не сработал
+
   setTimeout(() => document.querySelectorAll('.reveal:not(.in)').forEach((el) => el.classList.add('in')), 1800);
 </script>
 </body>
